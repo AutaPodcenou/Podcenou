@@ -82,7 +82,11 @@ h1 .hot{color:var(--signal)}
 .screen{height:100%;border-radius:32px;background:var(--panel-2);overflow:hidden;display:flex;flex-direction:column;gap:.6rem;padding:2.6rem .75rem .9rem}
 .screen .time{position:absolute;top:24px;left:0;right:0;text-align:center;font:600 .8rem/1 var(--f-body);color:var(--muted)}
 .notif{background:var(--panel);border-radius:16px;padding:.7rem .8rem;display:grid;grid-template-columns:28px 1fr;gap:.6rem;align-items:start;font-size:.8rem;line-height:1.35}
-.notif .ic{width:28px;height:28px;border-radius:7px;background:var(--ink);color:var(--bg);display:grid;place-items:center;font:800 .75rem/1 var(--f-display)}
+.notif .ic{width:28px;height:28px;border-radius:7px;background:var(--deal);color:#fff;display:grid;place-items:center}
+.notif .ic svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.notif .ic.m{background:var(--ink);color:var(--bg)}
+.notif u{text-decoration:none;color:var(--signal)}
+.tap{font:500 .68rem/1 var(--f-mono);color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin:.5rem .2rem -.2rem;display:flex;align-items:center;gap:.4rem}
 .notif b{display:flex;justify-content:space-between;gap:.5rem;font-weight:600}
 .notif b span{font:500 .7rem/1.4 var(--f-mono);color:var(--muted)}
 .notif em{font-style:normal;color:var(--deal);font-weight:600}
@@ -180,7 +184,7 @@ footer{padding-block:2.5rem 3rem;color:var(--muted);font-size:.85rem}
     <div>
       <div class="eyebrow"><i></i>Připravujeme · Česko</div>
       <h1>Kupuj auta <span class="strike">za plnou</span> <span class="hot">pod cenou</span></h1>
-      <p class="lead">Nastavíš, jaký auto hledáš. Pod cenou hlídá bazary za tebe a pošle upozornění ve chvíli, kdy se objeví kousek levnější než podobná auta na trhu.</p>
+      <p class="lead">Nastavíš, jaký auto hledáš. Pod cenou hlídá bazary za tebe a pošle ti SMS nebo e-mail ve chvíli, kdy se objeví kousek levnější než podobná auta na trhu.</p>
       <form class="signup js-form" name="waitlist">
                 <p hidden><label>Nevyplňovat <input name="bot-field"></label></p>
         <label class="sr" for="email-top" hidden>E-mail</label>
@@ -196,17 +200,18 @@ footer{padding-block:2.5rem 3rem;color:var(--muted);font-size:.85rem}
         <div class="screen">
           <div class="time">9:41</div>
           <div class="notif new">
-            <div class="ic">−%</div>
-            <div><b>Pod cenou <span>teď</span></b>BMW 330i Touring, 2020 · <em>o 10 % pod trhem</em></div>
+            <div class="ic" title="SMS"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></svg></div>
+            <div><b>Pod cenou <span>SMS · teď</span></b>BMW 330i Touring 2020, 579 000 Kč, <em>o 10 % pod trhem</em>. <u>autapodcenou.cz/a/x7k</u></div>
           </div>
           <div class="notif old">
-            <div class="ic">−%</div>
-            <div><b>Pod cenou <span>před 2 h</span></b>Octavia RS Combi, 2019 · <em>o 7 % pod trhem</em></div>
+            <div class="ic" title="SMS"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></svg></div>
+            <div><b>Pod cenou <span>SMS · před 2 h</span></b>Octavia RS Combi 2019 · <em>o 7 % pod trhem</em></div>
           </div>
           <div class="notif old">
-            <div class="ic">−%</div>
-            <div><b>Pod cenou <span>včera</span></b>Golf GTI, 2018 · <em>zlevněno o 15 000 Kč</em></div>
+            <div class="ic m" title="E-mail"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div>
+            <div><b>Pod cenou <span>e-mail · včera</span></b>Golf GTI 2018 · <em>zlevněno o 15 000 Kč</em></div>
           </div>
+          <p class="tap">↓ Po kliknutí na odkaz</p>
           <div class="card">
             <p class="car">BMW 330i Touring</p>
             <p class="specs">2020 · 98 000 km · automat</p>
@@ -217,7 +222,7 @@ footer{padding-block:2.5rem 3rem;color:var(--muted);font-size:.85rem}
           </div>
         </div>
       </div>
-      <p class="sample">Ukázka, ne skutečné inzeráty.</p>
+      <p class="sample">Upozornění chodí SMSkou a e-mailem, žádnou appku stahovat nemusíš. Ukázka, ne skutečné inzeráty.</p>
     </div>
   </div>
 </div>
@@ -245,7 +250,7 @@ footer{padding-block:2.5rem 3rem;color:var(--muted);font-size:.85rem}
     <ol class="steps">
       <li><h3>Nastavíš hledání</h3><p class="muted">Značka, model, rok, nájezd, palivo a maximální cena. Klidně víc hledání najednou.</p></li>
       <li><h3>Hlídáme za tebe</h3><p class="muted">Nové inzeráty procházíme průběžně. Už nemusíš každej večer projíždět bazary.</p></li>
-      <li><h3>Dostaneš upozornění</h3><p class="muted">Hned jak se objeví shoda, s odhadem ceny a tím, na co si u auta dát pozor.</p></li>
+      <li><h3>Přijde ti SMS nebo e-mail</h3><p class="muted">Hned jak se objeví shoda. Po kliknutí na odkaz uvidíš detail auta s odhadem ceny a tím, na co si u auta dát pozor.</p></li>
     </ol>
   </section>
 
